@@ -56,7 +56,7 @@ function Pachio()
             // Cancel the sound effect
             self.spinEffect.pause();
             var win = soundEffect("/audio/bigwin.mp3");
-            setTimeout(function() { win.pause(); }, 3000);
+            setTimeout(function() { win.pause(); }, 4000);
 
             self.triggerLookup(
                 $("#slots").attr("data-chosen-genre"),
