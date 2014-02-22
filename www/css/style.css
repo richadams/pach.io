@@ -1,6 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
     height: 100%;
     
     font-family: Arial, sans-serif;
@@ -117,12 +118,20 @@ h1 {
     padding: 0;
     display: block;
     clear: both;
-    width: 100%;
+    width: calc(100% - 300px);
     background: #fff;
     list-style: none;
     margin: 0px;
     overflow: auto;
     height: 70%;
+    float: left;
+}
+
+#spotify {
+    background: #fff;
+    height: 70%;
+    width: 300px;
+    float: left;   
 }
 
 #playlist .track {
