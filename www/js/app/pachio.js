@@ -3,6 +3,8 @@ function Pachio()
     // Members
     var self = this; // Self-reference
 
+    self.spinEffect = null; // For the spinning sound effect to maintain state.
+
     // Constructor
     self._construct = function _construct()
     {
@@ -51,6 +53,11 @@ function Pachio()
             && $("#slots").is("[data-chosen-mood]")
             && $("#slots").is("[data-chosen-era]"))
         {
+            // Cancel the sound effect
+            self.spinEffect.pause();
+            var win = soundEffect("/audio/bigwin.mp3");
+            setTimeout(function() { win.pause(); }, 3000);
+
             self.triggerLookup(
                 $("#slots").attr("data-chosen-genre"),
                 $("#slots").attr("data-chosen-mood"),
@@ -65,6 +72,8 @@ function Pachio()
         $("#slots").on("click", function()
         {
             // Slots auto-trigger.
+            soundEffect("/audio/lever_pull.mp3");
+            setTimeout(function() { self.spinEffect = soundEffect("/audio/spin.mp3"); }, 1500);
 
             // Set active
             $("#slots").addClass("active");
@@ -87,7 +96,7 @@ function Pachio()
 
         console.log("[pach.io] loading radio data from", url);
 
-        $("#loading").addClass("active");
+        $(".loading").addClass("active");
         jQuery.ajax(
         {
             async: true,
@@ -100,11 +109,11 @@ function Pachio()
 
                 // Check if JSON
                 if (typeof data != "object"
-                    && !isJSON(data)) { alert("Bad response from server :("); }
+                    && !isJSON(data)) { alert("Bad response from server :(\nコンピュータから不正な応答 :("); $(".loading").removeClass("active"); }
 
                 // Check status.
                 var status = data.RESPONSE[0].STATUS;
-                if (status == "NO_MATCH") { alert("No results :("); }
+                if (status == "NO_MATCH") { alert("No results :(\n何もありません :("); $(".loading").removeClass("active"); }
 
                 // Create track objects
                 var tracks = new Array();
@@ -114,8 +123,6 @@ function Pachio()
                 // Create a new playlist object and render it.
                 var playlist = new Playlist(tracks);
                 playlist.render();
-
-                $("#loading").removeClass("active");
 
                 console.log("[pach.io] data retrieved successfully, state updated.");
 

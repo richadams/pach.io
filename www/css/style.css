@@ -182,10 +182,7 @@ h1 {
     100% { opacity: 0; -webkit-transform: scale3d(1.2, 1.2, 0); }
 }
 
-#loading {
-    position: absolute;
-    top: 60%;
-    left: 50%;
+.loading {
     width: 50px;
     height: 50px;
     margin-left: -25px;
@@ -196,8 +193,20 @@ h1 {
     display: none;
 }
 
-#loading.active {
+.loading.active {
     display: block;
+}
+
+#loading-playlist {
+    position: absolute;
+    top: 75%;
+    left: calc((100% - 300px) - 50%);
+}
+
+#loading-spotify {
+    position: absolute;
+    top: 75%;
+    right: 150px;
 }
 
 .wrapper {

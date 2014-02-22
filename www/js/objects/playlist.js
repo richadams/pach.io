@@ -51,6 +51,7 @@ function Playlist(data)
                 + "</li>"
             );
         }
+        $("#loading-playlist").removeClass("active");
     };
 
     // Render spotify playlist
@@ -59,6 +60,7 @@ function Playlist(data)
         $("#spotify").html(
             "<iframe src=\"" + self.generateSpotifyURI() + "\" frameborder=\"0\" width=\"300\" height=\"700\" allowtransparency=\"true\"></iframe>"
         );
+        $("#loading-spotify").removeClass("active");
     }
 
     // Generate the spotify playlist URI

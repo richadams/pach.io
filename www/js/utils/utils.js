@@ -157,3 +157,11 @@ function isJSON(str)
     }
     return true;
 }
+
+// Helper for sound effects.
+function soundEffect(file)
+{
+    var a = new Audio(file);
+    a.play();
+    return a;
+}
