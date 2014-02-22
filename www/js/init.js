@@ -5,7 +5,11 @@ include("config/config.js");
 
 // Utility functions
 include("utils/utils.js");
+
+// Libs
 include("libs/jquery-md5.js");
+include("libs/jquery-slots.min.js");
+include("libs/jquery-easing.js");
 
 // Lookups
 include("lookups/eras.js");

@@ -10,6 +10,28 @@ function Pachio()
 
         // Setup listeners.
         self.setupEventListeners();
+
+        // Setup slots
+        self.setupSlot("era");
+        self.setupSlot("genre");
+        self.setupSlot("mood");
+    }
+
+    // Setup the slot plugin
+    self.setupSlot = function(title)
+    {
+        var $element = $("#" + title);
+        $element.jSlots(
+        {
+            number: 1,
+            spinner: '#slots',
+            onEnd: function(finalNumbers)
+            {
+                var index    = finalNumbers[0];
+                var chosenID = $element.children(index).attr("data-id");
+                $("#slots").attr("data-chosen-" + title, chosenID);
+            }
+        });
     }
 
     // All the events we'll be listening for are setup here
@@ -17,67 +39,74 @@ function Pachio()
     {
         $("#slots").on("click", function()
         {
-            // Get random GOETs
-            var mood  = get_array_random(_moods);
-            var era   = get_array_random(_eras);
-            var genre = get_array_random(_genres);
+            // Slots auto-trigger, will take 7s to complete, so trigger our lookup then.
 
-            // Update display
-            $("#mood").html(mood.text);
-            $("#genre").html(genre.text);
-            $("#era").html(era.text);
-
-            // Construct URL
-            var url = "/api.php?mood=" + mood.id + "&genre=" + genre.id + "&era=" + era.id;
-
-            console.log("[pach.io] loading radio data from", url);
-
-            $("#loading").addClass("active");
-            $("#playlist").html("");
-            jQuery.ajax(
+            // TODO: race condition.
+            setTimeout(function()
             {
-                async: true,
-                type: "GET",
-                url: url,
-                data: null,
-                success: function(data, textStatus, jqxhr)
-                {
-                    console.log(data);
+                self.triggerLookup(
+                    $("#slots").attr("data-chosen-genre"),
+                    $("#slots").attr("data-chosen-mood"),
+                    $("#slots").attr("data-chosen-era")
+                );
+            }, 7000);
+            return;
+        });
+    }
 
-                    // Check if JSON
-                    if (typeof data != "object"
-                        && !isJSON(data)) { alert("Bad response from server :("); }
+    // Trigger a server lookup with a mood, genre and era combo.
+    self.triggerLookup = function(genreID, moodID, eraID)
+    {
+        // Construct URL
+        var url = "/api.php?mood=" + moodID + "&genre=" + genreID + "&era=" + eraID;
 
-                    // Check status.
-                    var status = data.RESPONSE[0].STATUS;
-                    if (status == "NO_MATCH") { alert("No results :("); }
+        console.log("[pach.io] loading radio data from", url);
 
-                    // Create track objects
-                    var tracks = new Array();
-                    var results = data.RESPONSE[0].ALBUM;
-                    for (var t in results) { tracks.push(new Track(results[t])); }
+        $("#loading").addClass("active");
+        $("#playlist").html("");
+        jQuery.ajax(
+        {
+            async: true,
+            type: "GET",
+            url: url,
+            data: null,
+            success: function(data, textStatus, jqxhr)
+            {
+                console.log(data);
 
-                    // Create a new playlist object and render it.
-                    var playlist = new Playlist(tracks);
-                    playlist.render();
+                // Check if JSON
+                if (typeof data != "object"
+                    && !isJSON(data)) { alert("Bad response from server :("); }
 
-                    $("#loading").removeClass("active");
+                // Check status.
+                var status = data.RESPONSE[0].STATUS;
+                if (status == "NO_MATCH") { alert("No results :("); }
 
-                    console.log("[pach.io] data retrieved successfully, state updated.");
+                // Create track objects
+                var tracks = new Array();
+                var results = data.RESPONSE[0].ALBUM;
+                for (var t in results) { tracks.push(new Track(results[t])); }
 
-                    // Trigger the callback
-                    if (typeof callback == "function") { callback(); }
-                },
-                error: function (xhr, textStatus, errorThrown)
-                {
-                    // Throw to Chrome console, jQuery won't alert as it will catch it itself.
-                    console.error("Error from remote server " + url);
-                    console.error(errorThrown);
+                // Create a new playlist object and render it.
+                var playlist = new Playlist(tracks);
+                playlist.render();
 
-                    // Trigger the callback
-                    if (typeof callback == "function") { callback(); }
-                }
-            });
+                $("#loading").removeClass("active");
+
+                console.log("[pach.io] data retrieved successfully, state updated.");
+
+                // Trigger the callback
+                if (typeof callback == "function") { callback(); }
+            },
+            error: function (xhr, textStatus, errorThrown)
+            {
+                // Throw to Chrome console, jQuery won't alert as it will catch it itself.
+                console.error("Error from remote server " + url);
+                console.error(errorThrown);
+
+                // Trigger the callback
+                if (typeof callback == "function") { callback(); }
+            }
         });
     }
 

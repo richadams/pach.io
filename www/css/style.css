@@ -93,26 +93,32 @@ h1 {
 
 #slots {
     height: 15%;
-    display: table;
+    display: block;
     width: 100%;
     padding: 0em;
     margin: 0em;
 }
 
-#slots div {
-    display: table-cell;
+#slots ul {
+    float: left;
     font-size: 1.5em;
     font-weight: bold;
-    padding: 1em;
-    width: 33.3333333%;
+    width: 100%;
     text-align: center;
     height: 100%;
     vertical-align: middle;
 }
 
-#slots div#mood  { background: #f00; }
-#slots div#genre { background: #0f0; }
-#slots div#era   { background: #00f; }
+#slots ul#mood li  { background: #f00; }
+#slots ul#genre li { background: #0f0; }
+#slots ul#era li   { background: #00f; }
+
+#slots ul li {
+    width: 100%;
+    height: 100%;
+    display: block;
+    padding: 1em;
+}
 
 #playlist {
     padding: 0;
@@ -131,7 +137,7 @@ h1 {
     background: #fff;
     height: 70%;
     width: 300px;
-    float: left;   
+    float: left;
 }
 
 #playlist .track {
@@ -167,4 +173,12 @@ h1 {
 
 #loading.active {
     display: block;
+}
+
+.jSlots-wrapper {
+    overflow: hidden;
+    height: 100%;
+    float: left;
+    width: 33.333333%;
+    background: transparent;
 }
