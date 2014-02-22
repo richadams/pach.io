@@ -1,5 +1,8 @@
 // Entry point for the application.
 
+// Configuration
+include("config/config.js");
+
 // Utility functions
 include("utils/utils.js");
 

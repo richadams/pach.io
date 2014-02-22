@@ -16,6 +16,10 @@ date_default_timezone_set("UTC");
 // Increase PHP's default memory allowance to 256MB
 ini_set("memory_limit", "256M");
 
+// This is a hack project, so set all error reporting on.
+error_reporting(E_ALL & ~E_NOTICE);
+ini_set("display_errors", "On");
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Include all dependencies (order is important!)
 
