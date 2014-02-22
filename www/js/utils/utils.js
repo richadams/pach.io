@@ -140,3 +140,20 @@ function log10(val)
 {
     return Math.log(val) / Math.log(10);
 }
+
+
+
+// Misc
+
+function isJSON(str)
+{
+    try
+    {
+        JSON.parse(str);
+    }
+    catch (e)
+    {
+        return false;
+    }
+    return true;
+}

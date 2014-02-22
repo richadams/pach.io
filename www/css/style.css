@@ -2,6 +2,8 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    
+    font-family: Arial, sans-serif;
 
     /* Hide user selections, no user interaction in this project */
     user-select: none;

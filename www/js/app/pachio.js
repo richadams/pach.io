@@ -27,14 +27,10 @@ function Pachio()
             $("#genre").html(genre.text);
             $("#era").html(era.text);
 
-            //$("#output").html("Mood = " + mood.text + "<br/>Genre = " + genre.text + "<br/>Era = " + era.text);
-
             // Construct URL
             var url = "/api.php?mood=" + mood.id + "&genre=" + genre.id + "&era=" + era.id;
 
             console.log("[pach.io] loading radio data from", url);
-
-            $("#output").append("<br/>Loading...");
 
             $("#loading").addClass("active");
             $("#playlist").html("");
@@ -46,12 +42,21 @@ function Pachio()
                 data: null,
                 success: function(data, textStatus, jqxhr)
                 {
+                    console.log(data);
+
+                    // Check if JSON
+                    if (typeof data != "object"
+                        && !isJSON(data)) { alert("Bad response from server :("); }
+
+                    // Check status.
+                    var status = data.RESPONSE[0].STATUS;
+                    if (status == "NO_MATCH") { alert("No results :("); }
+
                     // Create track objects
                     var tracks = new Array();
                     var results = data.RESPONSE[0].ALBUM;
                     for (var t in results) { tracks.push(new Track(results[t])); }
 
-                    console.log(tracks);
                     // Create a new playlist object and render it.
                     var playlist = new Playlist(tracks);
                     playlist.render();
@@ -59,7 +64,6 @@ function Pachio()
                     $("#loading").removeClass("active");
 
                     console.log("[pach.io] data retrieved successfully, state updated.");
-                    $("#output").append("<br/><br/>" + JSON.stringify(data, undefined, 2));
 
                     // Trigger the callback
                     if (typeof callback == "function") { callback(); }
