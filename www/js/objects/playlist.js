@@ -10,6 +10,28 @@ function Playlist(data)
     {
         console.log("[playlist] created");
         self.tracks = data;
+
+        self.setupEventHandlers();
+    }
+
+    // Custom event handlers
+    self.setupEventHandlers = function()
+    {
+        $("#playlist").on("spotify", function()
+        {
+            // Check if we're good to render spotify yet.
+            var spotifyOK = true;
+            for (var i in self.tracks)
+            {
+                if (!self.tracks[i].spotifyDone) { spotifyOK = false; break; }
+            }
+
+            if (spotifyOK)
+            {
+                console.log("[playlist] spotify data retrieved, rendering spotify...");
+                self.renderSpotify();
+            }
+        });
     }
 
     // Getters
@@ -29,10 +51,6 @@ function Playlist(data)
                 + "</li>"
             );
         }
-
-        // TODO: We might not have all the spotify results yet!!!
-        // TODO: This is a massive hack.
-        setTimeout(function() { self.renderSpotify(); }, 5000);
     };
 
     // Render spotify playlist

@@ -4,15 +4,14 @@ function Track(data)
     var self   = this; // Self-reference
 
     // Only care about these properties for now.
-    self.hash      = null;
-    self.data      = null;
-    self.spotifyID = null;
+    self.hash        = null;
+    self.data        = null;
+    self.spotifyID   = null;
+    self.spotifyDone = false; // True if we're done the spotify lookup.
 
     // Constructor
     self._construct = function _construct(data)
     {
-        console.log(data);
-
         self.data = data;
         self.hash = $.md5(self.getTitle() + "##" + self.getArtist());
 
@@ -30,7 +29,6 @@ function Track(data)
     // Track might have an artist, use that if so, otherwise same as album.
     self.getArtist      = function()
     {
-        console.log(self.data.TRACK[0].ARTIST);
         if (typeof self.data.TRACK[0].ARTIST != "undefined")
         {
             return self.data.TRACK[0].ARTIST[0].VALUE;
@@ -57,12 +55,17 @@ function Track(data)
                     self.spotifyID = data.tracks[0].href.replace("spotify:track:", "");
                     console.log("[track] spotify ID = " + self.spotifyID);
                 }
+
+                // Notify playlist that we've completed a spotify event.
+                self.spotifyDone = true;
+                $("#playlist").trigger("spotify");
             },
             error: function (xhr, textStatus, errorThrown)
             {
                 // Throw to Chrome console, jQuery won't alert as it will catch it itself.
                 console.error("Error from remote server " + url);
                 console.error(errorThrown);
+                self.spotifyDone = true; // Don't care about errors.
             }
         });
     }

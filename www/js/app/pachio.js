@@ -37,8 +37,26 @@ function Pachio()
                 var index    = finalNumbers[0];
                 var chosenID = $element.find("li").eq(index).attr("data-id");
                 $("#slots").attr("data-chosen-" + title, chosenID);
+
+                // See if we can trigger a lookup yet.
+                self.checkSlotProgress();
             }
         });
+    }
+
+    // This checks if we're good to trigger a lookup yet.
+    self.checkSlotProgress = function ()
+    {
+        if ($("#slots").is("[data-chosen-genre]")
+            && $("#slots").is("[data-chosen-mood]")
+            && $("#slots").is("[data-chosen-era]"))
+        {
+            self.triggerLookup(
+                $("#slots").attr("data-chosen-genre"),
+                $("#slots").attr("data-chosen-mood"),
+                $("#slots").attr("data-chosen-era")
+            );
+        }
     }
 
     // All the events we'll be listening for are setup here
@@ -46,21 +64,18 @@ function Pachio()
     {
         $("#slots").on("click", function()
         {
-            // Slots auto-trigger, will take 7s to complete, so trigger our lookup then.
+            // Slots auto-trigger.
 
+            // Set active
+            $("#slots").addClass("active");
+
+            // Clean up some other elements.
             $("#playlist").html("");
             $("#spotify").html("");
-
-            // TODO: race condition.
-            setTimeout(function()
-            {
-                self.triggerLookup(
-                    $("#slots").attr("data-chosen-genre"),
-                    $("#slots").attr("data-chosen-mood"),
-                    $("#slots").attr("data-chosen-era")
-                );
-            }, 7000);
-            return;
+            $("#slots")
+                .removeAttr("data-chosen-genre")
+                .removeAttr("data-chosen-mood")
+                .removeAttr("data-chosen-era")
         });
     }
 
