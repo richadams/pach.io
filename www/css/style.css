@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
 html, body {
     margin: 0;
     padding: 0;
@@ -6,7 +8,7 @@ html, body {
     
     background: url('/img/bgtile.jpg') top left repeat;
     
-    font-family: Arial, sans-serif;
+    font-family: "Open Sans", Arial, sans-serif;
 
     /* Hide user selections, no user interaction in this project */
     user-select: none;
@@ -85,11 +87,13 @@ h1 {
 }
 
 #slots {
-    height: 10%;
+    height: 25%;
     display: block;
     width: 100%;
     padding: 0em;
     margin: 0em;
+    background: transparent url('/img/gradientfront.png') top left repeat-x;
+    background-size: contain;
 }
 
 #slots ul {
@@ -102,15 +106,11 @@ h1 {
     vertical-align: middle;
 }
 
-#slots ul#mood li  { background: #f00; }
-#slots ul#genre li { background: #0f0; }
-#slots ul#era li   { background: #00f; }
-
 #slots ul li {
     width: 100%;
     height: 100%;
     display: block;
-    padding: 1em;
+    padding: 2.7em 0em;
 }
 
 #playlist {
@@ -122,24 +122,26 @@ h1 {
     list-style: none;
     margin: 0px;
     overflow: auto;
-    height: 65%;
+    height: 50%;
     float: left;
+    font-size: 0.9em;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 #spotify {
     background: transparent;
-    height: 70%;
+    height: 50%;
     width: 300px;
     float: left;
 }
 
 #playlist .track {
-    background: #555;
-    border-bottom: 1px solid #fff;
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     width: 100%;
     display: block;
     margin: 0px;
-    padding: 1em; 
+    padding: 0.8em; 
     color: #fff; 
 }
 
@@ -152,7 +154,7 @@ h1 {
 
 #loading {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     width: 50px;
     height: 50px;
@@ -168,10 +170,17 @@ h1 {
     display: block;
 }
 
+.wrapper {
+    height: 100%;
+    width: 33.3333%;
+    float: left;
+    overflow: hidden;
+}
+
 .jSlots-wrapper {
     overflow: hidden;
     height: 100%;
-    float: left;
-    width: 33.333333%;
+    display: block;
+    width: 100%;
     background: transparent;
 }

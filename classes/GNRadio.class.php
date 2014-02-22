@@ -3,7 +3,7 @@
 class GNRadio
 {
     // Members
-    var $_apiURL = "https://c[clid].web.cddbp.net/webapi/json/1.0/radio/create?return_count=20&select_extended=cover,link&genre=[genre]&mood=[mood]&era=[era]&client=[client]&user=[user]";
+    var $_apiURL = "https://c[clid].web.cddbp.net/webapi/json/1.0/radio/create?return_count=10&select_extended=cover,link&genre=[genre]&mood=[mood]&era=[era]&client=[client]&user=[user]";
 
     // Constructor
     public function __construct()
