@@ -110,7 +110,26 @@ h1 {
     width: 100%;
     height: 100%;
     display: block;
-    padding: 2.7em 0em;
+    padding: 4em 0em;
+}
+
+#slots .wrapper {
+    background-size: 40% 40%;
+    background-position: 50% 1.5em;
+    background-repeat: no-repeat;
+    background-color: transparent;   
+}
+
+#slots #mood-wrapper {
+    background-image: url('/img/mood.png');  
+}
+
+#slots #genre-wrapper {
+    background-image: url('/img/genre.png');
+}
+
+#slots #era-wrapper {
+    background-image: url('/img/era.png');
 }
 
 #playlist {
