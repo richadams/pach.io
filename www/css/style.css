@@ -4,6 +4,8 @@ html, body {
     overflow: hidden;
     height: 100%;
     
+    background: url('/img/bgtile.jpg') top left repeat;
+    
     font-family: Arial, sans-serif;
 
     /* Hide user selections, no user interaction in this project */
@@ -68,31 +70,22 @@ html, body {
     transition: none !important;
 }
 
-#output {
-    font-family: monospace;
-    background: #000;
-    color: #fff;
-    padding: 1em;
-    margin: 0;
-    box-sizing: border-box;
-    width: 100%;
-    height: 20%;
-    overflow: auto;
-    display: none;
-}
-
 h1 {
     font-size: 3em;
-    background: #fff;
+    background: transparent url('/img/logo.png') top center no-repeat;
+    background-size: contain;
     border: none;
     width: 100%;
-    height: 15%;
+    height: 25%;
     text-align: center;
     padding: 0.4em 0em;
+    text-indent: -9999px;
+    border-top: 0.3em solid transparent;
+    border-bottom: 0.3em solid transparent;
 }
 
 #slots {
-    height: 15%;
+    height: 10%;
     display: block;
     width: 100%;
     padding: 0em;
@@ -125,16 +118,16 @@ h1 {
     display: block;
     clear: both;
     width: calc(100% - 300px);
-    background: #fff;
+    background: transparent;
     list-style: none;
     margin: 0px;
     overflow: auto;
-    height: 70%;
+    height: 65%;
     float: left;
 }
 
 #spotify {
-    background: #fff;
+    background: transparent;
     height: 70%;
     width: 300px;
     float: left;

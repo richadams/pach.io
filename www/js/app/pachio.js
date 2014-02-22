@@ -41,6 +41,9 @@ function Pachio()
         {
             // Slots auto-trigger, will take 7s to complete, so trigger our lookup then.
 
+            $("#playlist").html("");
+            $("#spotify").html("");
+
             // TODO: race condition.
             setTimeout(function()
             {
@@ -63,7 +66,6 @@ function Pachio()
         console.log("[pach.io] loading radio data from", url);
 
         $("#loading").addClass("active");
-        $("#playlist").html("");
         jQuery.ajax(
         {
             async: true,
