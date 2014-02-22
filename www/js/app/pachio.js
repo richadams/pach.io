@@ -15,14 +15,19 @@ function Pachio()
     // All the events we'll be listening for are setup here
     self.setupEventListeners = function setupEventListeners()
     {
-        $("button#execute").on("click", function()
+        $("#slots").on("click", function()
         {
             // Get random GOETs
             var mood  = get_array_random(_moods);
             var era   = get_array_random(_eras);
             var genre = get_array_random(_genres);
 
-            $("#output").html("Mood = " + mood.text + "<br/>Genre = " + genre.text + "<br/>Era = " + era.text);
+            // Update display
+            $("#mood").html(mood.text);
+            $("#genre").html(genre.text);
+            $("#era").html(era.text);
+
+            //$("#output").html("Mood = " + mood.text + "<br/>Genre = " + genre.text + "<br/>Era = " + era.text);
 
             // Construct URL
             var url = "/api.php?mood=" + mood.id + "&genre=" + genre.id + "&era=" + era.id;
@@ -31,6 +36,8 @@ function Pachio()
 
             $("#output").append("<br/>Loading...");
 
+            $("#loading").addClass("active");
+            $("#playlist").html("");
             jQuery.ajax(
             {
                 async: true,
@@ -39,7 +46,17 @@ function Pachio()
                 data: null,
                 success: function(data, textStatus, jqxhr)
                 {
-                    console.log(data);
+                    // Create track objects
+                    var tracks = new Array();
+                    var results = data.RESPONSE[0].ALBUM;
+                    for (var t in results) { tracks.push(new Track(results[t])); }
+
+                    console.log(tracks);
+                    // Create a new playlist object and render it.
+                    var playlist = new Playlist(tracks);
+                    playlist.render();
+
+                    $("#loading").removeClass("active");
 
                     console.log("[pach.io] data retrieved successfully, state updated.");
                     $("#output").append("<br/><br/>" + JSON.stringify(data, undefined, 2));

@@ -1,0 +1,159 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+    /* Hide user selections, no user interaction in this project */
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+
+    /* Font anti-aliasing */
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+
+    /* Make animation rendering smoother */
+    -webkit-backface-visibility: hidden;
+}
+
+/* Style scroll bar for elements differently. */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment  {
+    height: auto;
+    display: block;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-track-piece  {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: auto;
+    background-color: rgba(102, 102, 102, 0.5);
+    border: none;
+    -webkit-border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: rgba(102, 102, 102, 0.9);
+}
+
+/* Disable selection colours. */
+::selection {
+    background: rgba(0, 0, 0, 0);
+}
+
+/* Apply a natural box layout model to all elements */
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+ }
+
+/* Assign this class to something to disable any transition effects. */
+.notransition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    -ms-transition: none !important;
+    transition: none !important;
+}
+
+#output {
+    font-family: monospace;
+    background: #000;
+    color: #fff;
+    padding: 1em;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 20%;
+    overflow: auto;
+    display: none;
+}
+
+h1 {
+    font-size: 3em;
+    background: #fff;
+    border: none;
+    width: 100%;
+    height: 15%;
+    text-align: center;
+    padding: 0.4em 0em;
+}
+
+#slots {
+    height: 15%;
+    display: table;
+    width: 100%;
+    padding: 0em;
+    margin: 0em;
+}
+
+#slots div {
+    display: table-cell;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 1em;
+    width: 33.3333333%;
+    text-align: center;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#slots div#mood  { background: #f00; }
+#slots div#genre { background: #0f0; }
+#slots div#era   { background: #00f; }
+
+#playlist {
+    padding: 0;
+    display: block;
+    clear: both;
+    width: 100%;
+    background: #fff;
+    list-style: none;
+    margin: 0px;
+    overflow: auto;
+    height: 70%;
+}
+
+#playlist .track {
+    background: #555;
+    border-bottom: 1px solid #fff;
+    width: 100%;
+    display: block;
+    margin: 0px;
+    padding: 1em; 
+    color: #fff; 
+}
+
+/* Note: Use 3d transform as they are GPU accelerated.*/
+@-webkit-keyframes 'pulsate' {
+    0%   { opacity: 0; -webkit-transform: scale3d(0.1, 0.1, 0); }
+    50%  { opacity: 1; }
+    100% { opacity: 0; -webkit-transform: scale3d(1.2, 1.2, 0); }
+}
+
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin-left: -25px;
+    margin-top: -25px;
+    border-radius: 50px;
+    background: #f00;
+    -webkit-animation: 'pulsate' 0.5s ease-out 0 infinite;
+    display: none;
+}
+
+#loading.active {
+    display: block;
+}

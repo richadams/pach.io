@@ -5,6 +5,7 @@
     <title>pach.io</title>
 
     <!-- Stylesheets -->
+    <link rel="stylesheet" media="all" href="/css/reset.css" />
     <link rel="stylesheet" media="all" href="/css/style.css" />
 
     <!-- JavaScript -->
@@ -15,8 +16,20 @@
 <body>
     <h1>pach.io!</h1>
 
-    <button id="execute">I'm feeling lucky</button>
+    <!-- The random selection -->
+    <section id="slots">
+        <div id="mood"></div>
+        <div id="genre"></div>
+        <div id="era"></div>
+    </section>
 
+    <!-- Loading spinner -->
+    <div id="loading"></div>
+
+    <!-- Results -->
+    <ol id="playlist"></ol>
+
+    <!-- Debugging -->
     <section id="output"></section>
 </body>
 </html>
