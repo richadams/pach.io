@@ -11,18 +11,32 @@ function Track(data)
     // Constructor
     self._construct = function _construct(data)
     {
+        console.log(data);
+
         self.data = data;
-        self.hash = $.md5(self.data.TITLE[0].VALUE + "##" + self.data.ARTIST[0].VALUE);
+        self.hash = $.md5(self.getTitle() + "##" + self.getArtist());
 
         // Try to acquire the spotify ID.
         self.lookupSpotifyIdentifier();
     }
 
     // Getters
-    self.getTitle     = function() { return self.data.TITLE[0].VALUE; }
-    self.getArtist    = function() { return self.data.ARTIST[0].VALUE; }
-    self.getSpotifyID = function() { return self.spotifyID; }
-    self.getHash      = function() { return self.hash; }
+    self.getTitle       = function() { return self.data.TRACK[0].TITLE[0].VALUE; }
+    self.getAlbum       = function() { return self.data.TITLE[0].VALUE; }
+    self.getAlbumArtist = function() { return self.data.ARTIST[0].VALUE; }
+    self.getSpotifyID   = function() { return self.spotifyID; }
+    self.getHash        = function() { return self.hash; }
+
+    // Track might have an artist, use that if so, otherwise same as album.
+    self.getArtist      = function()
+    {
+        console.log(self.data.TRACK[0].ARTIST);
+        if (typeof self.data.TRACK[0].ARTIST != "undefined")
+        {
+            return self.data.TRACK[0].ARTIST[0].VALUE;
+        }
+        return self.getAlbumArtist();
+    }
 
     // Make a best effort to get the Spotify ID.
     self.lookupSpotifyIdentifier = function()
