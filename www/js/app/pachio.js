@@ -8,6 +8,13 @@ function Pachio()
     {
         console.log("[app] application created");
 
+        // Add spinner icons
+        $("#slots ul li").each(function()
+        {
+            var randomNumber = Math.floor((Math.random()*11)+1); // 1-11
+            $(this).prepend("<img class=\"icon\" src=\"/img/slot/" + randomNumber + ".png\" />");
+        });
+
         // Setup listeners.
         self.setupEventListeners();
 

@@ -110,12 +110,18 @@ h1 {
     width: 100%;
     height: 100%;
     display: block;
-    padding: 4em 0em;
+    padding: 3.8em 0em;
+}
+
+#slots ul li img.icon {
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
 }
 
 #slots .wrapper {
-    background-size: 40% 40%;
-    background-position: 50% 1.5em;
+    background-size: 35% 35%;
+    background-position: 50% 1.7em;
     background-repeat: no-repeat;
     background-color: transparent;   
 }
