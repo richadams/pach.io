@@ -1,0 +1,59 @@
+# Disable most options, need symlink so RewriteRules can be used.
+Options +ExecCGI +FollowSymLinks -Includes -Indexes -MultiViews +SymLinksIfOwnerMatch
+
+# Will be making use of mod_rewrite.
+RewriteEngine on
+
+# Default file.
+DirectoryIndex index.html
+
+# Errors
+ErrorDocument 400 "Bad Request"
+ErrorDocument 401 "Unauthorized"
+ErrorDocument 403 "Forbidden"
+ErrorDocument 404 "Not Found"
+ErrorDocument 500 "Internal Server Error"
+
+# Restrict HTTP protocol versions, only allow 1.0 and 1.1 (wget uses 1.0)
+RewriteCond %{THE_REQUEST} !HTTP/1\.[0-1]$
+RewriteRule .* - [F]
+
+# Only allow HTTP methods HEAD, GET and POST.
+RewriteCond %{REQUEST_METHOD} !^(HEAD|GET|POST)$ [nc]
+RewriteRule .* - [F]
+
+# Returning a 404 instead of a F/403 for following, so we don't leak the fact certain files may exist.
+
+# Disallow .htaccess/.htpasswd files from being viewed.
+RewriteRule ^(.*)?\.ht([^m]*)?$ - [r=404,nc]
+
+# Disallow .git/.svn directories from being viewed.
+RewriteRule ^(.*)\.git(.*)?$ - [r=404,nc]
+
+# Disallow any status/info pages that may have accidentally been left open.
+RewriteRule ^(.*)?(/)?server-status(/)?$ - [r=404,nc]
+RewriteRule ^(.*)?(/)?server-info(/)?$ - [r=404,nc]
+RewriteRule ^(.*)?(/)?perl-status(/)?$ - [r=404,nc]
+
+# When accessing files directly, disallow all that don't have a specifically approved file extension.
+RewriteCond %{REQUEST_URI} !^.*\.(php|js|css|html)$ [nc]
+RewriteRule ^(.*)?\.(.*)?$ - [r=404,nc]
+
+# Strip some headers if we can.
+<IfModule mod_headers.c>
+    # Unset headers which can give away versions I'm running.
+    Header unset Server
+    Header unset X-Powered-By
+
+    # Mitigation for clickjacking attacks. Only allow frames from same origin.
+    # This is done from global config, don't do it twice otherwise things break.
+    #Header append X-Frame-Options SAMEORIGIN
+</IfModule>
+
+# Mitigation for CVE-2011-3192
+# Drop the (Request-)Range header when there are more than 5 ranges.
+<IfModule mod_headers.c>
+    SetEnvIf Range (,.*?){5,} bad-range=1
+    RequestHeader unset Range env=bad-range
+    RequestHeader unset Request-Range env=bad-range
+</IfModule>
