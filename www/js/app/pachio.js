@@ -1,7 +1,7 @@
 function Pachio()
 {
     // Members
-    var self    = this; // Self-reference
+    var self = this; // Self-reference
 
     // Constructor
     self._construct = function _construct()
@@ -28,7 +28,7 @@ function Pachio()
             onEnd: function(finalNumbers)
             {
                 var index    = finalNumbers[0];
-                var chosenID = $element.children(index).attr("data-id");
+                var chosenID = $element.find("li").eq(index).attr("data-id");
                 $("#slots").attr("data-chosen-" + title, chosenID);
             }
         });
