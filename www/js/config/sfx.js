@@ -16,3 +16,8 @@ function soundEffect(file)
     SFX_AUDIO[file].play();
     return SFX_AUDIO[file];
 }
+
+bg = new Audio("/audio/bgnoise.m4a");
+bg.loop = true;
+bg.volume = 50;
+bg.play();

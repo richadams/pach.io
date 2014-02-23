@@ -166,6 +166,7 @@ function Pachio()
 
                 // Show share links
                 $("#share").addClass("active");
+                $("#share-twitter").attr("href", "https://twitter.com/intent/tweet?url=http://pach.io&hashtags=musichackdaytokyo&text=Hello");
 
                 console.log("[pach.io] data retrieved successfully, state updated.");
 
