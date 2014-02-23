@@ -32,6 +32,22 @@ function Playlist(data)
                 self.renderSpotify();
             }
         });
+
+        $("#playlist").on("youtube", function()
+        {
+            // Check if we're good to render youtube yet.
+            var youtubeOK = true;
+            for (var i in self.tracks)
+            {
+                if (!self.tracks[i].youtubeDone) { youtubeOK = false; break; }
+            }
+
+            if (youtubeOK)
+            {
+                console.log("[playlist] spotify data retrieved, rendering spotify...");
+                self.renderYouTube();
+            }
+        });
     }
 
     // Getters
@@ -63,11 +79,33 @@ function Playlist(data)
         $("#loading-spotify").removeClass("active");
     }
 
+    // Render youTube playlist
+    self.renderYouTube = function()
+    {
+        $("#youtube").html(
+            "<iframe src=\"" + self.generateYouTubeURI() + "\" frameborder=\"0\" width=\"300\" height=\"300\"></iframe>"
+        );
+        $("#loading-youtube").removeClass("active");
+    }
+
     // Generate the spotify playlist URI
     self.generateSpotifyURI = function()
     {
         var url = "https://embed.spotify.com/?uri=spotify:trackset:パチラジオ:";
         for (var i in self.tracks) { url = url + self.tracks[i].getSpotifyID() + ","; }
+        return url.substring(0, url.length - 1); // Remove final ","
+    }
+
+    // Generate the youtube playlist URI
+    self.generateYouTubeURI = function()
+    {
+        var url = "http://www.youtube.com/embed/" + self.tracks[0].getYouTubeID() + "?rel=0&showinfo=1&playlist=";
+        var skip = true;
+        for (var i in self.tracks)
+        {
+            if (skip) { skip = false; continue; } 
+            url = url + self.tracks[i].getYouTubeID() + ",";
+        }
         return url.substring(0, url.length - 1); // Remove final ","
     }
 

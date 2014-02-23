@@ -11,9 +11,9 @@ html, body {
     font-family: "Open Sans", Arial, sans-serif;
 
     /* Hide user selections, no user interaction in this project */
-    user-select: none;
+    /*user-select: none;
     -webkit-touch-callout: none;
-    -webkit-user-select: none;
+    -webkit-user-select: none;*/
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 
     /* Font anti-aliasing */
@@ -144,25 +144,38 @@ h1 {
 }
 
 #playlist {
+    position: absolute;
+    top: 50%;
+    left: 300px;
     padding: 0;
     display: block;
     clear: both;
-    width: calc(100% - 300px);
+    width: calc(100% - 600px);
     background: transparent;
     list-style: none;
     margin: 0px;
     overflow: auto;
     height: 50%;
-    float: left;
     font-size: 0.9em;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 #spotify {
+    position: absolute;
+    right: 0px;
+    top: 50%;
     background: transparent;
     height: 50%;
     width: 300px;
-    float: left;
+}
+
+#youtube {
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    background: transparent;
+    height: 50%;
+    width: 300px; 
 }
 
 #playlist .track {
@@ -200,13 +213,19 @@ h1 {
 #loading-playlist {
     position: absolute;
     top: 75%;
-    left: calc((100% - 300px) - 50%);
+    left: 50%;
 }
 
 #loading-spotify {
     position: absolute;
     top: 75%;
     right: 150px;
+}
+
+#loading-youtube {
+    position: absolute;
+    top: 75%;
+    left: 150px;
 }
 
 .wrapper {
