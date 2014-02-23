@@ -50,6 +50,39 @@ function Pachio()
             var randomNumber = Math.floor((Math.random()*11)+1); // 1-11
             $(this).prepend("<img class=\"icon\" src=\"/img/slot/" + randomNumber + ".png\" />");
         });
+
+        // Jump to previous place if necessary.
+        var params = getSearchParameters();
+
+        if (typeof params.mood != "undefined"
+            && typeof params.genre != "undefined"
+            && typeof params.era != "undefined")
+        {
+            // Recall previous playlist.
+            var mood  = params.mood;
+            var era   = params.era;
+            var genre = params.genre;
+
+            // Put list into correct state.
+            var elemHeight = $("li[data-id=" + mood + "]").outerHeight();
+            $("#mood")
+                //.css("position", "absolute")
+                .css("top", "-" + (elemHeight * $("#mood li[data-id=" + mood + "]").index()) + "px");
+            $("#genre")
+                //.css("position", "absolute")
+                .css("top", "-" + (elemHeight * $("#genre li[data-id=" + genre + "]").index()) + "px");
+            $("#era")
+                //.css("position", "absolute")
+                .css("top", "-" + (elemHeight * $("#era li[data-id=" + era + "]").index()) + "px");
+
+            $("#instructions").addClass("done");
+            $("#slots").addClass("active");
+
+            var win = soundEffect(EFFECTS.WIN);
+            setTimeout(function() { win.pause(); }, 4000);
+
+            self.triggerLookup(genre, mood, era);
+        }
     };
 
     // Setup the slot plugin
@@ -85,6 +118,12 @@ function Pachio()
             var win = soundEffect(EFFECTS.WIN);
             setTimeout(function() { win.pause(); }, 4000);
 
+            updateHash(
+                "mood=" + $("#slots").attr("data-chosen-mood")
+                + "&genre=" + $("#slots").attr("data-chosen-genre")
+                + "&era=" + $("#slots").attr("data-chosen-era")
+            );
+
             self.triggerLookup(
                 $("#slots").attr("data-chosen-genre"),
                 $("#slots").attr("data-chosen-mood"),
@@ -98,6 +137,8 @@ function Pachio()
     {
         $(".spin-trigger").on("click", function()
         {
+            updateHash("");
+
             // Hide instructions
             $("#instructions").addClass("done");
 
@@ -171,7 +212,14 @@ function Pachio()
                 tweet = tweet.replace("[era]",   localText(_eras, $("#slots").attr("data-chosen-era")));
                 tweet = tweet + " ";
 
-                $("#share-twitter").attr("href", "https://twitter.com/intent/tweet?url=" + encodeURIComponent("http://pach.io") + "&hashtags=pachio&text=" + encodeURIComponent(tweet));
+                var uri = "http://pach.io/" + window.location.hash;
+                /*uri = uri + "#mood=" + $("#slots").attr("data-chosen-mood")
+                      + "&genre=" + $("#slots").attr("data-chosen-genre")
+                      + "&era=" + $("#slots").attr("data-chosen-era");
+
+                if (!JAPAN) { uri = uri + "&english"; }*/
+
+                $("#share-twitter").attr("href", "https://twitter.com/intent/tweet?url=" + encodeURIComponent(uri) + "&hashtags=pachio&text=" + encodeURIComponent(tweet));
                 //tweet = tweet + " #pachio http://pach.io";
                 //$("#share-twitter").attr("href", "https://twitter.com/intent/tweet?text=" + tweet);
 

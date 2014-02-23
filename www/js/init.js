@@ -5,12 +5,12 @@ include("lookups/eras.js");
 include("lookups/moods.js");
 include("lookups/genres.js");
 
+// Utility functions
+include("utils/utils.js");
+
 // Configuration
 include("config/config.js");
 include("config/sfx.js");
-
-// Utility functions
-include("utils/utils.js");
 
 // Libs
 include("libs/jquery-md5.js");
