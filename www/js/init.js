@@ -1,5 +1,10 @@
 // Entry point for the application.
 
+// Lookups
+include("lookups/eras.js");
+include("lookups/moods.js");
+include("lookups/genres.js");
+
 // Configuration
 include("config/config.js");
 
@@ -10,11 +15,6 @@ include("utils/utils.js");
 include("libs/jquery-md5.js");
 include("libs/jquery-slots.min.js");
 include("libs/jquery-easing.js");
-
-// Lookups
-include("lookups/eras.js");
-include("lookups/moods.js");
-include("lookups/genres.js");
 
 // Objects
 include("objects/track.js");

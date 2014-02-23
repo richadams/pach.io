@@ -3,7 +3,7 @@
 class GNRadio
 {
     // Members
-    var $_apiURL = "https://c[clid].web.cddbp.net/webapi/json/1.0/radio/create?return_count=10&select_extended=cover,link&genre=[genre]&mood=[mood]&era=[era]&client=[client]&user=[user]";
+    var $_apiURL = "https://c[clid].web.cddbp.net/webapi/json/1.0/radio/create?country=[country]&lang=[ang]&return_count=10&select_extended=cover,link&genre=[genre]&mood=[mood]&era=[era]&client=[client]&user=[user]";
 
     // Constructor
     public function __construct()
@@ -16,11 +16,13 @@ class GNRadio
 
     // Retrieve the radio station data
     // NOTE: Assume inputs are validated
-    public function getStation($genre, $mood, $era)
+    public function getStation($genre, $mood, $era, $country = "usa", $lang = "eng")
     {
-        $url = str_replace("[mood]",  $mood,  $this->_apiURL);
-        $url = str_replace("[genre]", $genre, $url);
-        $url = str_replace("[era]",   $era,   $url);
+        $url = str_replace("[mood]",    $mood,    $this->_apiURL);
+        $url = str_replace("[genre]",   $genre,   $url);
+        $url = str_replace("[era]",     $era,     $url);
+        $url = str_replace("[country]", $country, $url);
+        $url = str_replace("[lang]",    $lang,    $url);
 
         // Perform the request
         return $this->execute($url);

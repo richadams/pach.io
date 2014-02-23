@@ -10,12 +10,8 @@ function Pachio()
     {
         console.log("[app] application created");
 
-        // Add spinner icons
-        $("#slots ul li").each(function()
-        {
-            var randomNumber = Math.floor((Math.random()*11)+1); // 1-11
-            $(this).prepend("<img class=\"icon\" src=\"/img/slot/" + randomNumber + ".png\" />");
-        });
+        // Setup page elements
+        self.setupElements();
 
         // Setup listeners.
         self.setupEventListeners();
@@ -25,6 +21,36 @@ function Pachio()
         self.setupSlot("genre");
         self.setupSlot("mood");
     }
+
+    self.setupElements = function()
+    {
+        // Add spinner elements
+        for (var i in _eras)
+        {
+            var o = _eras[i];
+            var text = (JAPAN) ? o.text : o.texten;
+            $("#era").append("<li data-id=\"" + o.id + "\">" + text + "</li>");
+        }
+        for (var i in _genres)
+        {
+            var o = _genres[i];
+            var text = (JAPAN) ? o.text : o.texten;
+            $("#genre").append("<li data-id=\"" + o.id + "\">" + text + "</li>");
+        }
+        for (var i in _moods)
+        {
+            var o = _moods[i];
+            var text = (JAPAN) ? o.text : o.texten;
+            $("#mood").append("<li data-id=\"" + o.id + "\">" + text + "</li>");
+        }
+
+        // Add spinner icons
+        $("#slots ul li").each(function()
+        {
+            var randomNumber = Math.floor((Math.random()*11)+1); // 1-11
+            $(this).prepend("<img class=\"icon\" src=\"/img/slot/" + randomNumber + ".png\" />");
+        });
+    };
 
     // Setup the slot plugin
     self.setupSlot = function(title)
@@ -92,7 +118,11 @@ function Pachio()
     self.triggerLookup = function(genreID, moodID, eraID)
     {
         // Construct URL
-        var url = "/api.php?mood=" + moodID + "&genre=" + genreID + "&era=" + eraID;
+        var url = "/api.php?lang=" + PACHIO_LANG
+            + "&country=" + PACHIO_COUNTRY
+            + "&mood=" + moodID
+            + "&genre=" + genreID
+            + "&era=" + eraID;
 
         console.log("[pach.io] loading radio data from", url);
 
