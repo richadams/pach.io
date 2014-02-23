@@ -59,7 +59,7 @@ function Pachio()
         $element.jSlots(
         {
             number: 1,
-            spinner: '#slots',
+            spinner: '.spin-trigger',
             easing: 'easeOutSine',
             onEnd: function(finalNumbers)
             {
@@ -96,7 +96,7 @@ function Pachio()
     // All the events we'll be listening for are setup here
     self.setupEventListeners = function setupEventListeners()
     {
-        $("#slots").on("click", function()
+        $(".spin-trigger").on("click", function()
         {
             $("#slots").addClass("blur");
             setTimeout(function() { $("#slots").removeClass("blur"); }, 3000);
