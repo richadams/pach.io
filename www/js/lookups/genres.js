@@ -5,7 +5,7 @@ var _genres = new Array(
 {id:25984,text:"ワールド",texten:"World"},
 {id:36055,text:"エレクトロニカ",texten:"Electronica"},
 {id:36059,text:"カントリー &ウェスタン",texten:"Country & Western"},
-{id:36064,text:"コメディ, スピーチ &その他",texten:"Comedy, Spoken & Other"},
+//{id:36064,text:"コメディ, スピーチ &その他",texten:"Comedy, Spoken & Other"},
 {id:25978,text:"トラディショナル ポップ",texten:"Traditional Pop"},
 {id:25971,text:"フォーク",texten:"Folk"},
 {id:36051,text:"パンク",texten:"Punk"},
