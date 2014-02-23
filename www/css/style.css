@@ -241,8 +241,8 @@ h1 {
 
 #error p {
     position: absolute;
-    background: rgba(255, 0, 0, 0.8);
-    top: 40%;   
+    background: rgba(255, 0, 0, 1);
+    top: 40%;
     width: 100%;
     padding: 3em 0em;
 }
