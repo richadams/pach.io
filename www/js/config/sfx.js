@@ -14,6 +14,7 @@ SFX_AUDIO[EFFECTS.WIN]  = new Audio(EFFECTS.WIN);
 function soundEffect(file)
 {
     SFX_AUDIO[file].play();
+    SFX_AUDIO[file].position = 0;
     return SFX_AUDIO[file];
 }
 
