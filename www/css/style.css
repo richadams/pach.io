@@ -395,3 +395,10 @@ body.jp #headers #era-header {
     font-family: sans-serif;
     font-size: 18px;
 }
+
+#language {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    font-size: 0.9em;   
+}

@@ -24,6 +24,8 @@ function Pachio()
 
     self.setupElements = function()
     {
+        if (!JAPAN) { $("#language").css("display", "none"); }
+    
         // Add spinner elements
         for (var i in _eras)
         {
