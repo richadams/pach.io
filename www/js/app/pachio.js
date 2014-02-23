@@ -60,6 +60,7 @@ function Pachio()
         {
             number: 1,
             spinner: '#slots',
+            easing: 'easeOutSine',
             onEnd: function(finalNumbers)
             {
                 var index    = finalNumbers[0];
