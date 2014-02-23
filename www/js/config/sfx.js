@@ -19,5 +19,5 @@ function soundEffect(file)
 
 bg = new Audio("/audio/bgnoise.m4a");
 bg.loop = true;
-bg.volume = 50;
+bg.volume = 0.2;
 bg.play();
