@@ -108,6 +108,7 @@ function Pachio()
             // Clean up some other elements.
             $("#playlist").html("");
             $("#spotify").html("");
+            $("#youtube").html("");
             $("#slots")
                 .removeAttr("data-chosen-genre")
                 .removeAttr("data-chosen-mood")
