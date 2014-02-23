@@ -165,3 +165,11 @@ function soundEffect(file)
     a.play();
     return a;
 }
+
+function showError(msg)
+{
+    $("#error")
+        .html("<p>" + msg + "</p>")
+        .addClass("active");
+    setTimeout(function() { $("#error").removeClass("active"); }, 3000);
+}

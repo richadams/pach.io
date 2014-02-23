@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans);*/
 
 html, body {
     margin: 0;
@@ -222,4 +222,31 @@ h1 {
     display: block;
     width: 100%;
     background: transparent;
+}
+
+#error {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    line-height: 1.5;
+    pointer-events: none;
+}
+
+#error p {
+    position: absolute;
+    background: rgba(255, 0, 0, 0.8);
+    top: 40%;   
+    width: 100%;
+    padding: 3em 0em;
+}
+
+#error.active {
+    opacity: 1;
 }

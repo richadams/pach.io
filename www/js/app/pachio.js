@@ -139,11 +139,11 @@ function Pachio()
 
                 // Check if JSON
                 if (typeof data != "object"
-                    && !isJSON(data)) { alert("Bad response from server :(\nコンピュータから不正な応答 :("); $(".loading").removeClass("active"); }
+                    && !isJSON(data)) { showError("Bad response from server :(<br/>コンピュータから不正な応答 :("); $(".loading").removeClass("active"); }
 
                 // Check status.
                 var status = data.RESPONSE[0].STATUS;
-                if (status == "NO_MATCH") { alert("No results :(\n何もありません :("); $(".loading").removeClass("active"); }
+                if (status == "NO_MATCH") { showError("No results :(<br/>何もありません :("); $(".loading").removeClass("active"); }
 
                 // Create track objects
                 var tracks = new Array();
