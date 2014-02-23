@@ -63,7 +63,7 @@ function Pachio()
             onEnd: function(finalNumbers)
             {
                 var index    = finalNumbers[0];
-                var chosenID = $element.find("li").eq(index).attr("data-id");
+                var chosenID = $element.find("li").eq(index-1).attr("data-id");
                 $("#slots").attr("data-chosen-" + title, chosenID);
 
                 // See if we can trigger a lookup yet.
