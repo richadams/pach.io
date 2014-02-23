@@ -402,3 +402,8 @@ body.jp #headers #era-header {
     left: 0.5em;
     font-size: 0.9em;   
 }
+
+#language a {
+    color: #000;
+    text-decoration: none;   
+}
