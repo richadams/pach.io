@@ -47,7 +47,7 @@ function Track(data)
     // Make a best effort to get the Spotify ID.
     self.lookupSpotifyIdentifier = function()
     {
-        var url = "https://ws.spotify.com/search/1/track.json?q=" + self.getArtist() + " " + self.getTitle();
+        var url = "https://ws.spotify.com/search/1/track.json?q=" + self.getArtist() + " - " + self.getTitle();
         console.log(url);
         jQuery.ajax(
         {

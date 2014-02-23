@@ -98,6 +98,9 @@ function Pachio()
     {
         $("#slots").on("click", function()
         {
+            $("#slots").addClass("blur");
+            setTimeout(function() { $("#slots").removeClass("blur"); }, 3000);
+
             // Slots auto-trigger.
             soundEffect("/audio/lever_pull.mp3");
             setTimeout(function() { self.spinEffect = soundEffect("/audio/spin.mp3"); }, 1500);
