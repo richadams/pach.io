@@ -48,6 +48,7 @@ function Track(data)
     self.lookupSpotifyIdentifier = function()
     {
         var url = "https://ws.spotify.com/search/1/track.json?q=" + self.getArtist() + " " + self.getTitle();
+        console.log(url);
         jQuery.ajax(
         {
             async: true,
@@ -82,6 +83,7 @@ function Track(data)
     self.lookupYouTubeIdentifier = function()
     {
         var url = "https://gdata.youtube.com/feeds/api/videos?alt=json&max-results=1&q=" + self.getArtist() + " " + self.getTitle();
+        console.log(url);
         jQuery.ajax(
         {
             async: true,
