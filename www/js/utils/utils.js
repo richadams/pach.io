@@ -165,3 +165,16 @@ function showError(msg)
         .addClass("active");
     setTimeout(function() { $("#error").removeClass("active"); }, 3000);
 }
+
+function localText(array, id)
+{
+    for (var i in array)
+    {
+        if (array[i].id == id)
+        {
+            if (JAPAN) { return array[i].text; }
+            return array[i].texten;
+        }
+    }
+    return "";
+}

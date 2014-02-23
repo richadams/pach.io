@@ -166,7 +166,14 @@ function Pachio()
 
                 // Show share links
                 $("#share").addClass("active");
-                $("#share-twitter").attr("href", "https://twitter.com/intent/tweet?url=http://pach.io&hashtags=musichackdaytokyo&text=Hello");
+                var tweet = TWEET_TEMPLATE.replace("[mood]", localText(_moods, $("#slots").attr("data-chosen-mood")));
+                tweet = tweet.replace("[genre]", localText(_genres, $("#slots").attr("data-chosen-genre")));
+                tweet = tweet.replace("[era]",   localText(_eras, $("#slots").attr("data-chosen-era")));
+                tweet = tweet + " ";
+
+                $("#share-twitter").attr("href", "https://twitter.com/intent/tweet?url=" + encodeURIComponent("http://pach.io") + "&hashtags=pachio&text=" + encodeURIComponent(tweet));
+                //tweet = tweet + " #pachio http://pach.io";
+                //$("#share-twitter").attr("href", "https://twitter.com/intent/tweet?text=" + tweet);
 
                 console.log("[pach.io] data retrieved successfully, state updated.");
 
