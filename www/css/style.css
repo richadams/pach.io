@@ -310,3 +310,31 @@ h1 {
 #instructions.done {
    opacity: 0;
 }
+
+#share {
+   position: absolute;
+   top: 0.5em;
+   right: 0.5em; 
+   width: 500px;
+   height: 3em;
+   opacity: 0; 
+   transition: opacity 0.3s ease-in-out;
+}
+
+#share.active {
+   opacity: 1;   
+}
+
+#share a#share-twitter {
+   float: right;
+   background: #4099ff;
+   color: #fff;
+   border-radius: 5px;
+   padding: 0.5em;
+   text-decoration: none; 
+   transition: all 0.3s ease-in-out;
+}
+
+#share a#share-twitter:hover {
+   background: #4072ab;
+}

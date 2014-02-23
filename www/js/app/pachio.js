@@ -116,6 +116,7 @@ function Pachio()
             $("#playlist").html("");
             $("#spotify").html("");
             $("#youtube").html("");
+            $("#share").removeClass("active");
             $("#slots")
                 .removeAttr("data-chosen-genre")
                 .removeAttr("data-chosen-mood")
@@ -162,6 +163,9 @@ function Pachio()
                 // Create a new playlist object and render it.
                 var playlist = new Playlist(tracks);
                 playlist.render();
+
+                // Show share links
+                $("#share").addClass("active");
 
                 console.log("[pach.io] data retrieved successfully, state updated.");
 
