@@ -19,7 +19,7 @@ if (JAPAN) { _genres = _genres_japan; }
 
 // Text replacements
 var TWEET_TEMPLATE = (JAPAN) ? "[mood]と[genre]はミュージックPACH.IOが聞いている。おまかせ検索!"
-                             : "I'm listening to [mood] [genre] from the [era] station on pach.io. See what radio station you get!";
+                             : "I'm listening to [mood] [genre] from the [era] on pach.io. See what radio station you get!";
 var TWEET_SHARE    = (JAPAN) ? "ツイート"
                              : "Share";
 
