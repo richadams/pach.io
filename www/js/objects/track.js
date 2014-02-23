@@ -92,6 +92,13 @@ function Track(data)
             data: null,
             success: function(data, textStatus, jqxhr)
             {
+                // Hack
+                if (typeof data.feed.entry == "undefined") 
+                {
+                    self.youtubeDone = true;
+                    return;
+                }
+
                 // If we got some tracks back
                 if (data.feed.entry.length > 0)
                 {
