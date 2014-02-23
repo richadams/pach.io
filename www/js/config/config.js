@@ -29,3 +29,4 @@ var INSTRUCTIONS = (JAPAN) ? "▲ こちらをクリックしてください。
 $("#instructions").html(INSTRUCTIONS);
 $("#share-twitter span.twCount").html(TWEET_SHARE);
 
+if (JAPAN) { $("body").addClass("jp"); }

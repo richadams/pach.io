@@ -118,6 +118,18 @@ h1 {
     background-image: url('/img/era.png');
 }
 
+body.jp #headers #mood-header {
+    background-image: url('/img/mood_jp.png');  
+}
+
+body.jp #headers #genre-header {
+    background-image: url('/img/genre_jp.png');
+}
+
+body.jp #headers #era-header {
+    background-image: url('/img/era_jp.png');
+}
+
 #slots {
     height: 25%;
     display: block;
