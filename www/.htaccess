@@ -36,7 +36,7 @@ RewriteRule ^(.*)?(/)?server-info(/)?$ - [r=404,nc]
 RewriteRule ^(.*)?(/)?perl-status(/)?$ - [r=404,nc]
 
 # When accessing files directly, disallow all that don't have a specifically approved file extension.
-RewriteCond %{REQUEST_URI} !^.*\.(php|js|css|html|png|jpg|mp3)$ [nc]
+RewriteCond %{REQUEST_URI} !^.*\.(php|js|css|html|png|jpg|mp3|m4a)$ [nc]
 RewriteRule ^(.*)?\.(.*)?$ - [r=404,nc]
 
 # Strip some headers if we can.

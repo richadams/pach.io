@@ -82,7 +82,7 @@ function Pachio()
         {
             // Cancel the sound effect
             self.spinEffect.pause();
-            var win = soundEffect("/audio/bigwin.mp3");
+            var win = soundEffect("/audio/win.m4a");
             setTimeout(function() { win.pause(); }, 4000);
 
             self.triggerLookup(
@@ -102,8 +102,8 @@ function Pachio()
             setTimeout(function() { $("#slots").removeClass("blur"); }, 3000);
 
             // Slots auto-trigger.
-            soundEffect("/audio/lever_pull.mp3");
-            setTimeout(function() { self.spinEffect = soundEffect("/audio/spin.mp3"); }, 1500);
+            soundEffect("/audio/pull.m4a");
+            setTimeout(function() { self.spinEffect = soundEffect("/audio/spin.m4a"); }, 1500);
 
             // Set active
             $("#slots").addClass("active");
