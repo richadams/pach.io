@@ -7,6 +7,7 @@ include("lookups/genres.js");
 
 // Configuration
 include("config/config.js");
+include("config/sfx.js");
 
 // Utility functions
 include("utils/utils.js");

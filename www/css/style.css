@@ -294,3 +294,19 @@ h1 {
 #error.active {
     opacity: 1;
 }
+
+#instructions {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    padding-top: 0.5em;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#instructions.done {
+   opacity: 0;
+}
