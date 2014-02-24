@@ -83,7 +83,7 @@ function Playlist(data)
     self.renderYouTube = function()
     {
         $("#youtube").html(
-            "<iframe src=\"" + self.generateYouTubeURI() + "\" frameborder=\"0\" width=\"300\" height=\"300\"></iframe>"
+            "<iframe src=\"" + self.generateYouTubeURI() + "\" frameborder=\"0\" width=\"300\" height=\"380\"></iframe>"
         );
         $("#loading-youtube").removeClass("active");
     }

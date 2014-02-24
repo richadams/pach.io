@@ -173,8 +173,8 @@ body.jp #headers #era-header {
 }
 
 #slots ul li img.icon {
-    width: 3em;
-    height: 3em;
+    width: auto;
+    height: calc(100% - 1.5em);
     display: block;
     margin: 0 auto;
     margin-bottom: 0.5em;
@@ -192,7 +192,7 @@ body.jp #headers #era-header {
     list-style: none;
     margin: 0px;
     overflow: auto;
-    height: 50%;
+    height: calc(50% - 1.5em);
     font-size: 0.9em;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
 }
@@ -202,7 +202,8 @@ body.jp #headers #era-header {
     right: 0px;
     top: 50%;
     background: transparent;
-    height: 50%;
+    height: calc(50% - 1.4em);
+    overflow: hidden;
     width: 300px;
 }
 
@@ -211,8 +212,9 @@ body.jp #headers #era-header {
     left: 0px;
     top: 50%;
     background: transparent;
-    height: 50%;
+    height: calc(50% - 1.4em);
     width: 300px; 
+    overflow: hidden;
 }
 
 #playlist .track {
@@ -406,4 +408,14 @@ body.jp #headers #era-header {
 #language a {
     color: #000;
     text-decoration: none;   
+}
+
+footer {
+    position: absolute;
+    height: 1.3em;
+    width: 100%;
+    text-align: center;
+    bottom: 0.2em;
+    font-size: 0.8em;
+    font-style: italic;
 }
