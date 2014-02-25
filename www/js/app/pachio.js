@@ -24,7 +24,7 @@ function Pachio()
 
     self.setupElements = function()
     {
-        if (!JAPAN) { $("#language").css("display", "none"); }
+        $("#switchlang").html((JAPAN) ? "English" : "日本語");
     
         // Add spinner elements
         for (var i in _eras)
@@ -137,6 +137,50 @@ function Pachio()
     // All the events we'll be listening for are setup here
     self.setupEventListeners = function setupEventListeners()
     {
+        // Re setup slot machine on resize so we get new heights.
+        /*$(window).resize(function()
+        {
+            self.setupSlot("era");
+            self.setupSlot("genre");
+            self.setupSlot("mood");
+        });*/
+        
+        // Language control
+        $("#switchlang").on("click", function(e)
+        {
+            e.preventDefault();
+            window.location.hash = ((JAPAN) ? "#english" : "");
+            window.location.reload();
+            return false;
+        });
+        
+        // Audio controls.
+        $("#audiomute").on("click", function(e)
+        {
+            e.preventDefault();
+            
+            // If sound is currently on, turn it off
+            if ((Math.ceil(bg.volume * 10) / 10) == 0.2)
+            {
+                SFX_AUDIO[EFFECTS.PULL].volume = 0;
+                SFX_AUDIO[EFFECTS.SPIN].volume = 0;
+                SFX_AUDIO[EFFECTS.WIN].volume  = 0;
+                bg.volume = 0;
+                $(this).html("Unmute").addClass("muted");
+            }
+            // If off, turn back on.
+            else
+            {
+                SFX_AUDIO[EFFECTS.PULL].volume = 1;
+                SFX_AUDIO[EFFECTS.SPIN].volume = 1;
+                SFX_AUDIO[EFFECTS.WIN].volume  = 1;
+                bg.volume = 0.1;
+                $(this).html("Mute").removeClass("muted");
+            }
+            
+            return false;
+        });
+    
         $(".spin-trigger").on("click", function()
         {
             updateHash("");

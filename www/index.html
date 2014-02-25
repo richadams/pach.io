@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="jp">
 <head>
-    <meta charset="utf-8" />
     <title>パチラジオ</title>
+    <meta charset="utf-8" />
+    <meta name="google" content="notranslate" />
+    <meta http-equiv="Content-Language" content="ja_JP" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" media="all" href="/css/reset.css" />
@@ -18,7 +20,12 @@
 
     <!-- Language change -->
     <section id="language">
-        <a onclick="window.location.hash='#english'; window.location.reload()" href="#english">English</a>
+        <a id="switchlang" href="">English</a>
+    </section>
+    
+    <!-- Settings -->
+    <section id="settings">
+        <a id="audiomute" href="">Mute</a>
     </section>
 
     <!-- Social.. because everyone loves social right? -->

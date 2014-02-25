@@ -400,9 +400,10 @@ body.jp #headers #era-header {
 
 #language {
     position: absolute;
-    top: 0.5em;
-    left: 0.5em;
-    font-size: 0.9em;   
+    top: 0.75em;
+    left: 2.3em;
+    height: 1em;
+    font-size: 0.9em;  
 }
 
 #language a {
@@ -418,4 +419,29 @@ footer {
     bottom: 0.2em;
     font-size: 0.8em;
     font-style: italic;
+}
+
+#settings {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    width: 1.5em;
+    height: 1.5em;   
+    font-size: 0.9em;
+    overflow: hidden;
+}
+
+#settings #audiomute {
+    display: block;
+    height: 100%;
+    width:100%;
+    text-indent: -999px;
+    text-decoration: none;
+    background: url("/img/mute_2.png") center center no-repeat;
+    background-size: contain;   
+}
+
+#settings #audiomute.muted {
+    background: url("/img/mute_1.png") center center no-repeat;
+    background-size: contain;  
 }
