@@ -160,7 +160,7 @@ function Pachio()
             e.preventDefault();
             
             // If sound is currently on, turn it off
-            if ((Math.ceil(bg.volume * 10) / 10) == 0.2)
+            if (bg.volume > 0)
             {
                 SFX_AUDIO[EFFECTS.PULL].volume = 0;
                 SFX_AUDIO[EFFECTS.SPIN].volume = 0;
