@@ -2,6 +2,8 @@
 
 Available in Japanese http://pach.io or English http://pach.io#english.
 
+![Screenshot of pach.io](pach.io.png)
+
 ----
 
 おまかせ検索!
@@ -13,8 +15,6 @@ Available in Japanese http://pach.io or English http://pach.io#english.
 Pachislo is a popular Japanese slot machine game that can be found in [Pachinko](http://en.wikipedia.org/wiki/Pachinko) parlors all over the country.
 
 Pach.io stands for "Pachislo Radio". Using Gracenote's Rhythm API, it creates a different playlist on each spin, based on a random combination of Gracenote's Mood, Genre, and Era descriptors. For example, "Energizing R&B from the 90's" or "Sentimental Country from the 2000's". Music is provided by Spotify and YouTube.
-
-![Screenshot of pach.io](pach.io.png)
 
 Spin the wheel and find a combination you enjoy!
 
