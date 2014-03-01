@@ -6,10 +6,10 @@ function Track(data)
     // Only care about these properties for now.
     self.hash        = null;
     self.data        = null;
-    
+
     self.spotifyID   = null;
     self.spotifyDone = false; // True if we're done the spotify lookup.
-    
+
     self.youtubeID   = null;
     self.youtubeDone = false; // True if we're done the youtube lookup.
 
@@ -93,7 +93,7 @@ function Track(data)
             success: function(data, textStatus, jqxhr)
             {
                 // Hack
-                if (typeof data.feed.entry == "undefined") 
+                if (typeof data.feed.entry == "undefined")
                 {
                     self.youtubeDone = true;
                     return;

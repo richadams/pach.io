@@ -1,5 +1,5 @@
-// Gracenote SF
-// @author Rich Adams <rich@gravitymobile.com>
+// Misc JS utility functions.
+// @author Rich Adams <radams@gracenote.com>
 
 // OBJECT PROCESSING
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -141,9 +141,7 @@ function log10(val)
     return Math.log(val) / Math.log(10);
 }
 
-
-
-// Misc
+// Pach.io misc.
 
 function isJSON(str)
 {

@@ -1,3 +1,5 @@
+// See _scripts/generate_static_lookup.php.
+
 var _moods = new Array(
 {id:65322,text:"ピースフル",texten:"Peaceful"},
 {id:65323,text:"ロマンティック",texten:"Romantic"},

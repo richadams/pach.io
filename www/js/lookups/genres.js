@@ -1,3 +1,5 @@
+// See _scripts/generate_static_lookup.php.
+
 var _genres = new Array(
 {id:25982,text:"ラテン",texten:"Latin"},
 {id:36060,text:"ブルース",texten:"Blues"},

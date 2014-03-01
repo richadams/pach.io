@@ -103,7 +103,7 @@ function Playlist(data)
         var skip = true;
         for (var i in self.tracks)
         {
-            if (skip) { skip = false; continue; } 
+            if (skip) { skip = false; continue; }
             url = url + self.tracks[i].getYouTubeID() + ",";
         }
         return url.substring(0, url.length - 1); // Remove final ","
