@@ -38,19 +38,5 @@ class GNRadio
 
         // Don't bother validating response, just pass it through.
         return $response;
-
-        /*$this->validateResponse($response);
-
-        // It's all good if we get to here.
-        $decode = json_decode($response, true);
-        return $decode;*/
     }
-
-    // This will validate the response from EDAS and throw an exception if it's bad in any way.
-    /*protected function validateResponse($response)
-    {
-        // Attempt to JSON decode
-        $decoded = json_decode($response, true);
-        if ($response === false) { die("invalid json"); }
-    }*/
 };
