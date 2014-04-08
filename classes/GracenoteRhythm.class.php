@@ -4,7 +4,7 @@ class GracenoteRhythm
 {
     // Members
     var $_apiBase    = "https://c[clid].web.cddbp.net/webapi/json/1.0/radio/";
-    var $_apiCreate  = "create?country=[country]&lang=[ang]&return_count=[count]&select_extended=cover,link&genre=[genre]&mood=[mood]&era=[era]&client=[client]&user=[user]";
+    var $_apiCreate  = "create?country=[country]&lang=[lang]&return_count=[count]&select_extended=cover,link&genre=[genre]&mood=[mood]&era=[era]&client=[client]&user=[user]";
     var $_apiFields  = "fieldvalues?country=[country]&lang=[lang]&fieldname=[fieldname]&client=[client]&user=[user]";
 
     // Constructor
