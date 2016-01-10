@@ -99,7 +99,7 @@ function Playlist(data)
     // Generate the youtube playlist URI
     self.generateYouTubeURI = function()
     {
-        var url = "http://www.youtube.com/embed/" + self.tracks[0].getYouTubeID() + "?rel=0&showinfo=1&playlist=";
+        var url = "https://www.youtube.com/embed/" + self.tracks[0].getYouTubeID() + "?rel=0&showinfo=1&playlist=";
         var skip = true;
         for (var i in self.tracks)
         {

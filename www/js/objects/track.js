@@ -82,7 +82,7 @@ function Track(data)
     // Make a best effort to get the YouTube ID.
     self.lookupYouTubeIdentifier = function()
     {
-        var url = "https://gdata.youtube.com/feeds/api/videos?alt=json&max-results=1&q=" + self.getArtist() + " " + self.getTitle();
+        var url = "https://www.googleapis.com/youtube/v3/search?key=[YOUR_KEY_HERE]&part=snippet&type=video&maxResults=1&q=" + self.getArtist() + " " + self.getTitle();
         console.log(url);
         jQuery.ajax(
         {
@@ -93,17 +93,17 @@ function Track(data)
             success: function(data, textStatus, jqxhr)
             {
                 // Hack
-                if (typeof data.feed.entry == "undefined")
+                if (typeof data.items == "undefined")
                 {
                     self.youtubeDone = true;
                     return;
                 }
 
                 // If we got some tracks back
-                if (data.feed.entry.length > 0)
+                if (data.items.length > 0)
                 {
                     // Assume first track is best match.. for now.
-                    self.youtubeID = data.feed.entry[0].id.$t.replace("http://gdata.youtube.com/feeds/api/videos/","");
+                    self.youtubeID = data.items[0].id.videoId;
                     console.log("[track] youtube ID = " + self.youtubeID);
                 }
 
